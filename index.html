@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GAME HUB // RETRO ARCADE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="index">
+
+  <div class="index-screen">
+
+    <!-- Site header -->
+    <header class="site-header">
+      <div class="panel-titlebar">
+        <div class="dots">
+          <div class="dot red"></div>
+          <div class="dot amber"></div>
+          <div class="dot green"></div>
+        </div>
+        <div class="title">GAME HUB // SESSION ACTIVE</div>
+      </div>
+      <div class="site-header-inner">
+        <div class="site-logo">
+          RETRO<span style="color:var(--accent);">ARCADE</span>
+          <small>PRIVATE GAMES TERMINAL &nbsp;v1.0.0</small>
+        </div>
+        <div class="user-badge">
+          <div class="name" id="display-name">PLAYER</div>
+          <div style="margin-top:4px;">
+            CLOCK: <span id="live-clock" style="color:var(--accent);">--:--:--</span>
+          </div>
+          <button class="logout-btn" id="logout-btn" style="margin-top:8px;">[LOGOUT]</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Section label -->
+    <div class="section-label">&gt; SELECT GAME MODULE</div>
+
+    <!-- Game grid -->
+    <div class="game-grid">
+
+      <!-- PONG -->
+      <a href="games/pong.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">◧◨</div>
+          <div class="game-title">PONG</div>
+          <div class="game-desc">Classic 2-player paddle battle. First to 7 wins.</div>
+          <div class="game-tag">2-PLAYER</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: PONG.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <!-- TIC-TAC-TOE -->
+      <a href="games/tictactoe.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">⊞</div>
+          <div class="game-title">TIC-TAC-TOE</div>
+          <div class="game-desc">3×3 grid. X vs O. Align three to claim victory.</div>
+          <div class="game-tag">VS CPU</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: TTT.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <!-- MEMORY GAME -->
+      <a href="games/memory.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">▦</div>
+          <div class="game-title">MEMORY</div>
+          <div class="game-desc">Flip cards and match pairs. Beat your best time.</div>
+          <div class="game-tag">SOLO</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: MEM.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <!-- SNAKE -->
+      <a href="games/snake.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">⟿</div>
+          <div class="game-title">SNAKE</div>
+          <div class="game-desc">Eat pellets, grow longer, avoid your own tail.</div>
+          <div class="game-tag">HIGH SCORE</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: SNAKE.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <!-- BREAKOUT -->
+      <a href="games/breakout.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">▬</div>
+          <div class="game-title">BREAKOUT</div>
+          <div class="game-desc">Bounce the ball. Smash every brick. Don't drop it.</div>
+          <div class="game-tag">SOLO</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: BRK.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <!-- COMING SOON placeholder -->
+      <div class="game-card" data-wip="true" style="opacity:0.45; cursor:not-allowed;">
+        <div class="game-card-inner">
+          <div class="game-icon" style="color:var(--text-dim);">?</div>
+          <div class="game-title" style="color:var(--text-dim);">???</div>
+          <div class="game-desc">Module not yet loaded. Check back soon.</div>
+          <div class="game-tag">LOCKED</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: UNKNOWN</span>
+          <span style="color:var(--error);">■ LOCKED</span>
+        </div>
+      </div>
+
+    </div><!-- /game-grid -->
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span>&copy; RETRO ARCADE SYSTEMS</span>
+      <span>ALL MODULES SUBJECT TO AVAILABILITY</span>
+    </footer>
+
+  </div><!-- /index-screen -->
+
+  <script src="script.js"></script>
+</body>
+</html>

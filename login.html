@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOGIN // RETRO ARCADE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="login">
+
+  <div class="screen">
+    <div class="panel">
+
+      <!-- Title bar -->
+      <div class="panel-titlebar">
+        <div class="dots">
+          <div class="dot red"></div>
+          <div class="dot amber"></div>
+          <div class="dot green"></div>
+        </div>
+        <div class="title">SYSTEM LOGIN</div>
+      </div>
+
+      <!-- Panel body -->
+      <div class="panel-body">
+
+        <!-- Logo -->
+        <div class="sys-header">
+          <div class="logo">RETRO<span style="color:var(--accent);">ARCADE</span></div>
+          <div class="tagline">PRIVATE ACCESS TERMINAL &nbsp;v1.0.0</div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Typewriter prompt -->
+        <div class="prompt-line">
+          &gt; <span id="sys-prompt"></span><span class="cursor"></span>
+        </div>
+
+        <!-- Login form -->
+        <form id="login-form" novalidate>
+          <div class="field-group">
+            <label class="field-label" for="password-input">
+              <span class="arrow">▶</span> ACCESS CODE
+            </label>
+            <input
+              type="password"
+              id="password-input"
+              autocomplete="current-password"
+              spellcheck="false"
+              placeholder="_ _ _ _ _ _ _ _ _ _"
+              autofocus
+            />
+          </div>
+
+          <button type="submit" class="btn" id="login-btn">
+            <span>[ AUTHENTICATE ]</span>
+          </button>
+        </form>
+
+        <!-- Status message -->
+        <div id="login-msg" class="msg hidden" aria-live="polite"></div>
+
+      </div><!-- /panel-body -->
+
+      <!-- Status bar -->
+      <div class="statusbar">
+        <span>CONN: SECURE</span>
+        <span class="ok">● ONLINE</span>
+        <span>SYS: NOMINAL</span>
+      </div>
+
+    </div><!-- /panel -->
+  </div><!-- /screen -->
+
+  <script src="script.js"></script>
+</body>
+</html>
