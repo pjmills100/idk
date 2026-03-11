@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UPLOADS // RETRO ARCADE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="index" data-subpage="uploads">
+
+  <div class="index-screen">
+
+    <header class="site-header">
+      <div class="panel-titlebar">
+        <div class="title">RETRO ARCADE // UPLOADS</div>
+      </div>
+      <div class="site-header-inner">
+        <div class="site-logo">
+          RETRO<span style="color:var(--accent);">ARCADE</span>
+          <small>PRIVATE GAMES TERMINAL &nbsp;v1.0.0</small>
+        </div>
+        <div class="user-badge">
+          <div>CLOCK: <span id="live-clock" style="color:var(--accent);">--:--:--</span></div>
+          <div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end;">
+            <button class="logout-btn settings-btn" id="settings-btn" style="display:none;">[SETTINGS]</button>
+            <button class="logout-btn" id="logout-btn">[LOGOUT]</button>
+          </div>
+        </div>
+      </div>
+      <nav class="dash-nav">
+        <a href="index.html"     class="dash-tab">[HOME]</a>
+        <a href="games.html"     class="dash-tab">[GAMES]</a>
+        <a href="unblocker.html" class="dash-tab">[UNBLOCKER]</a>
+        <a href="downloads.html" class="dash-tab">[DOWNLOADS]</a>
+        <a href="uploads.html"   class="dash-tab dash-tab--active">[UPLOADS]</a>
+      </nav>
+    </header>
+
+    <!-- Settings panel (Dev only) -->
+    <div id="settings-panel" class="settings-panel" style="display:none;">
+      <div class="settings-header">
+        <span>&gt; SYSTEM SETTINGS <span style="color:var(--text-dim);font-size:0.7rem;">[DEV ACCESS]</span></span>
+        <button class="logout-btn" id="settings-close">[CLOSE ✕]</button>
+      </div>
+      <div class="settings-body">
+        <div class="settings-row">
+          <span class="settings-label">▶ SYSTEM TIME</span>
+          <span class="settings-value" id="settings-clock" style="color:var(--accent2);font-size:1.4rem;letter-spacing:3px;">--:--</span>
+        </div>
+        <hr class="divider" style="margin:1rem 0;" />
+        <div class="settings-row settings-row--col">
+          <span class="settings-label">▶ DISPLAY THEME</span>
+          <div class="theme-options">
+            <label class="theme-option">
+              <input type="radio" name="theme" value="default" checked />
+              <span class="theme-swatch theme-swatch--default"></span>
+              <span class="theme-opt-label">DEFAULT BLUE</span>
+            </label>
+            <label class="theme-option">
+              <input type="radio" name="theme" value="darkgrey" />
+              <span class="theme-swatch theme-swatch--darkgrey"></span>
+              <span class="theme-opt-label">DARK GREY</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">&gt; IMPORT SAVE FILE</div>
+
+    <div class="dl-panel" style="max-width:860px;width:100%;">
+      <div class="panel-titlebar" style="justify-content:flex-start;">
+        <span class="title" style="font-size:1rem;">RESTORE FROM SAVE FILE</span>
+      </div>
+      <div class="dl-body">
+        <p style="font-size:0.78rem;color:var(--text-dim);margin-bottom:1.5rem;letter-spacing:1px;">
+          Upload a .json save file to restore your settings and game progress for this session.
+          Your current session data will be overwritten.
+        </p>
+
+        <!-- Drag & Drop zone -->
+        <div class="upload-drop-zone" id="upload-drop-zone">
+          <input type="file" id="upload-file-input" accept=".json" />
+          <div class="upload-drop-inner">
+            <div class="upload-icon">▲</div>
+            <div class="upload-label">DRAG &amp; DROP YOUR SAVE FILE HERE</div>
+            <div class="upload-sub">or click to browse — .json files only</div>
+          </div>
+        </div>
+
+        <div id="upload-status" class="msg hidden" style="margin-top:1rem;"></div>
+
+        <!-- Parsed preview -->
+        <div id="upload-preview-wrap" style="display:none;margin-top:1.2rem;">
+          <div class="section-label" style="margin-bottom:0.5rem;">&gt; FILE CONTENTS</div>
+          <pre id="upload-preview" class="save-preview"></pre>
+          <button class="btn" id="upload-apply-btn" style="max-width:320px;margin-top:1rem;">
+            <span>[ ✓ APPLY THIS SAVE FILE ]</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Current session data -->
+    <div class="section-label" style="margin-top:2rem;">&gt; CURRENT SESSION DATA</div>
+    <div class="dl-panel" style="max-width:860px;width:100%;">
+      <div class="panel-titlebar" style="justify-content:flex-start;">
+        <span class="title" style="font-size:1rem;">LIVE SESSION STATE</span>
+      </div>
+      <div class="dl-body">
+        <pre id="session-preview" class="save-preview">// Loading...</pre>
+        <button class="btn" id="clear-progress-btn" style="max-width:260px;margin-top:1rem;border-color:var(--error);color:var(--error);">
+          <span>[ ✕ CLEAR GAME PROGRESS ]</span>
+        </button>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <span>&copy; RETRO ARCADE SYSTEMS</span>
+      <span>ALL MODULES SUBJECT TO AVAILABILITY</span>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -11,15 +11,12 @@
   <div class="screen">
     <div class="panel">
 
-      <!-- Title bar -->
       <div class="panel-titlebar">
         <div class="title">SYSTEM LOGIN</div>
       </div>
 
-      <!-- Panel body -->
       <div class="panel-body">
 
-        <!-- Logo -->
         <div class="sys-header">
           <div class="logo">RETRO<span style="color:var(--accent);">ARCADE</span></div>
           <div class="tagline">PRIVATE ACCESS TERMINAL &nbsp;v1.0.0</div>
@@ -27,12 +24,10 @@
 
         <hr class="divider" />
 
-        <!-- Typewriter prompt -->
         <div class="prompt-line">
           &gt; <span id="sys-prompt"></span><span class="cursor"></span>
         </div>
 
-        <!-- Login form -->
         <form id="login-form" novalidate>
           <div class="field-group">
             <label class="field-label" for="password-input">
@@ -48,25 +43,37 @@
             />
           </div>
 
+          <div class="field-group">
+            <label class="field-label">
+              <span class="arrow">▶</span> LOAD SAVE FILE
+              <span style="color:var(--text-dim);font-size:0.65rem;margin-left:6px;">(OPTIONAL)</span>
+            </label>
+            <div class="file-drop-zone" id="file-drop-zone">
+              <input type="file" id="save-file-input" accept=".json" />
+              <div class="file-drop-label">
+                <span id="file-drop-text">◈ DROP .JSON SAVE FILE OR CLICK TO BROWSE</span>
+              </div>
+            </div>
+            <div id="file-status" class="file-status"></div>
+          </div>
+
           <button type="submit" class="btn" id="login-btn">
             <span>[ AUTHENTICATE ]</span>
           </button>
         </form>
 
-        <!-- Status message -->
         <div id="login-msg" class="msg hidden" aria-live="polite"></div>
 
-      </div><!-- /panel-body -->
+      </div>
 
-      <!-- Status bar -->
       <div class="statusbar">
         <span>CONN: SECURE</span>
         <span class="ok">● ONLINE</span>
         <span>SYS: NOMINAL</span>
       </div>
 
-    </div><!-- /panel -->
-  </div><!-- /screen -->
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

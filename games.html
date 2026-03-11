@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GAMES // RETRO ARCADE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="index">
+
+  <div class="index-screen">
+
+    <header class="site-header">
+      <div class="panel-titlebar">
+        <div class="title">RETRO ARCADE // GAME MODULES</div>
+      </div>
+      <div class="site-header-inner">
+        <div class="site-logo">
+          RETRO<span style="color:var(--accent);">ARCADE</span>
+          <small>PRIVATE GAMES TERMINAL &nbsp;v1.0.0</small>
+        </div>
+        <div class="user-badge">
+          <div>CLOCK: <span id="live-clock" style="color:var(--accent);">--:--:--</span></div>
+          <div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end;">
+            <button class="logout-btn settings-btn" id="settings-btn" style="display:none;">[SETTINGS]</button>
+            <button class="logout-btn" id="logout-btn">[LOGOUT]</button>
+          </div>
+        </div>
+      </div>
+      <nav class="dash-nav">
+        <a href="index.html"     class="dash-tab">[HOME]</a>
+        <a href="games.html"     class="dash-tab dash-tab--active">[GAMES]</a>
+        <a href="unblocker.html" class="dash-tab">[UNBLOCKER]</a>
+        <a href="downloads.html" class="dash-tab">[DOWNLOADS]</a>
+        <a href="uploads.html"   class="dash-tab">[UPLOADS]</a>
+      </nav>
+    </header>
+
+    <!-- Settings panel (Dev only) -->
+    <div id="settings-panel" class="settings-panel" style="display:none;">
+      <div class="settings-header">
+        <span>&gt; SYSTEM SETTINGS <span style="color:var(--text-dim);font-size:0.7rem;">[DEV ACCESS]</span></span>
+        <button class="logout-btn" id="settings-close">[CLOSE ✕]</button>
+      </div>
+      <div class="settings-body">
+        <div class="settings-row">
+          <span class="settings-label">▶ SYSTEM TIME</span>
+          <span class="settings-value" id="settings-clock" style="color:var(--accent2);font-size:1.4rem;letter-spacing:3px;">--:--</span>
+        </div>
+        <hr class="divider" style="margin:1rem 0;" />
+        <div class="settings-row settings-row--col">
+          <span class="settings-label">▶ DISPLAY THEME</span>
+          <div class="theme-options">
+            <label class="theme-option">
+              <input type="radio" name="theme" value="default" checked />
+              <span class="theme-swatch theme-swatch--default"></span>
+              <span class="theme-opt-label">DEFAULT BLUE</span>
+            </label>
+            <label class="theme-option">
+              <input type="radio" name="theme" value="darkgrey" />
+              <span class="theme-swatch theme-swatch--darkgrey"></span>
+              <span class="theme-opt-label">DARK GREY</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">&gt; SELECT GAME MODULE</div>
+
+    <div class="game-grid">
+
+      <a href="games/pong.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">◧◨</div>
+          <div class="game-title">PONG</div>
+          <div class="game-desc">Classic 2-player paddle battle. First to 7 wins.</div>
+          <div class="game-tag">2-PLAYER</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: PONG.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <a href="games/tictactoe.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">⊞</div>
+          <div class="game-title">TIC-TAC-TOE</div>
+          <div class="game-desc">3×3 grid. X vs O. Align three to claim victory.</div>
+          <div class="game-tag">VS CPU</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: TTT.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <a href="games/memory.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">▦</div>
+          <div class="game-title">MEMORY</div>
+          <div class="game-desc">Flip cards and match pairs. Beat your best time.</div>
+          <div class="game-tag">SOLO</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: MEM.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <a href="games/snake.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">⟿</div>
+          <div class="game-title">SNAKE</div>
+          <div class="game-desc">Eat pellets, grow longer, avoid your own tail.</div>
+          <div class="game-tag">HIGH SCORE</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: SNAKE.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <a href="games/breakout.html" class="game-card" data-wip="true">
+        <div class="game-card-inner">
+          <div class="game-icon">▬</div>
+          <div class="game-title">BREAKOUT</div>
+          <div class="game-desc">Bounce the ball. Smash every brick. Don't drop it.</div>
+          <div class="game-tag">SOLO</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: BRK.EXE</span>
+          <span class="play">▶ LAUNCH</span>
+        </div>
+      </a>
+
+      <div class="game-card" style="opacity:0.45;cursor:not-allowed;">
+        <div class="game-card-inner">
+          <div class="game-icon" style="color:var(--text-dim);">?</div>
+          <div class="game-title" style="color:var(--text-dim);">???</div>
+          <div class="game-desc">Module not yet loaded. Check back soon.</div>
+          <div class="game-tag">LOCKED</div>
+        </div>
+        <div class="game-card-footer">
+          <span>MODULE: UNKNOWN</span>
+          <span style="color:var(--error);">■ LOCKED</span>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="site-footer">
+      <span>&copy; RETRO ARCADE SYSTEMS</span>
+      <span>ALL MODULES SUBJECT TO AVAILABILITY</span>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

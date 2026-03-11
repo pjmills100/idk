@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNBLOCKER // RETRO ARCADE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="index" data-subpage="unblocker">
+
+  <div class="index-screen">
+
+    <header class="site-header">
+      <div class="panel-titlebar">
+        <div class="title">RETRO ARCADE // PROXY UNBLOCKER</div>
+      </div>
+      <div class="site-header-inner">
+        <div class="site-logo">
+          RETRO<span style="color:var(--accent);">ARCADE</span>
+          <small>PRIVATE GAMES TERMINAL &nbsp;v1.0.0</small>
+        </div>
+        <div class="user-badge">
+          <div>CLOCK: <span id="live-clock" style="color:var(--accent);">--:--:--</span></div>
+          <div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end;">
+            <button class="logout-btn settings-btn" id="settings-btn" style="display:none;">[SETTINGS]</button>
+            <button class="logout-btn" id="logout-btn">[LOGOUT]</button>
+          </div>
+        </div>
+      </div>
+      <nav class="dash-nav">
+        <a href="index.html"     class="dash-tab">[HOME]</a>
+        <a href="games.html"     class="dash-tab">[GAMES]</a>
+        <a href="unblocker.html" class="dash-tab dash-tab--active">[UNBLOCKER]</a>
+        <a href="downloads.html" class="dash-tab">[DOWNLOADS]</a>
+        <a href="uploads.html"   class="dash-tab">[UPLOADS]</a>
+      </nav>
+    </header>
+
+    <!-- Settings panel (Dev only) -->
+    <div id="settings-panel" class="settings-panel" style="display:none;">
+      <div class="settings-header">
+        <span>&gt; SYSTEM SETTINGS <span style="color:var(--text-dim);font-size:0.7rem;">[DEV ACCESS]</span></span>
+        <button class="logout-btn" id="settings-close">[CLOSE ✕]</button>
+      </div>
+      <div class="settings-body">
+        <div class="settings-row">
+          <span class="settings-label">▶ SYSTEM TIME</span>
+          <span class="settings-value" id="settings-clock" style="color:var(--accent2);font-size:1.4rem;letter-spacing:3px;">--:--</span>
+        </div>
+        <hr class="divider" style="margin:1rem 0;" />
+        <div class="settings-row settings-row--col">
+          <span class="settings-label">▶ DISPLAY THEME</span>
+          <div class="theme-options">
+            <label class="theme-option">
+              <input type="radio" name="theme" value="default" checked />
+              <span class="theme-swatch theme-swatch--default"></span>
+              <span class="theme-opt-label">DEFAULT BLUE</span>
+            </label>
+            <label class="theme-option">
+              <input type="radio" name="theme" value="darkgrey" />
+              <span class="theme-swatch theme-swatch--darkgrey"></span>
+              <span class="theme-opt-label">DARK GREY</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">&gt; PROXY TUNNEL MODULE</div>
+
+    <!-- Info notice -->
+    <div class="proxy-notice">
+      <span style="color:var(--accent);">▶ HOW THIS WORKS:</span>
+      Rammerhead is a server-side proxy and cannot run directly on a static Netlify site.
+      This page routes your URL through a <strong>public Rammerhead instance</strong>.
+      For a fully self-hosted proxy, deploy Rammerhead separately on a Node.js server and
+      point this page at your own instance URL below.
+    </div>
+
+    <!-- Proxy panel -->
+    <div class="proxy-panel">
+      <div class="panel-titlebar" style="justify-content:flex-start;gap:1rem;">
+        <span class="title" style="font-size:1rem;">PROXY CONFIG</span>
+      </div>
+      <div class="proxy-body">
+
+        <!-- Instance selector -->
+        <div class="field-group">
+          <label class="field-label">
+            <span class="arrow">▶</span> RAMMERHEAD INSTANCE
+          </label>
+          <select id="proxy-instance" class="proxy-select">
+            <option value="https://rammerhead.org">rammerhead.org (public)</option>
+            <option value="custom">Custom instance URL...</option>
+          </select>
+        </div>
+
+        <div class="field-group" id="custom-instance-group" style="display:none;">
+          <label class="field-label">
+            <span class="arrow">▶</span> CUSTOM INSTANCE URL
+          </label>
+          <input type="text" id="custom-instance-input" placeholder="https://your-rammerhead-server.com" />
+        </div>
+
+        <!-- URL input -->
+        <div class="field-group">
+          <label class="field-label">
+            <span class="arrow">▶</span> TARGET URL
+          </label>
+          <div style="display:flex;gap:8px;">
+            <input type="text" id="proxy-url-input" placeholder="https://example.com" style="flex:1;" />
+            <button class="btn proxy-go-btn" id="proxy-go-btn" style="width:auto;padding:0 1.5rem;margin-top:0;">
+              <span>[ GO ]</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="proxy-msg" class="msg hidden"></div>
+      </div>
+    </div>
+
+    <!-- Proxy iframe -->
+    <div class="proxy-frame-wrap" id="proxy-frame-wrap" style="display:none;">
+      <div class="proxy-frame-bar">
+        <span id="proxy-frame-url" style="color:var(--text-dim);font-size:0.7rem;letter-spacing:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;"></span>
+        <button class="logout-btn" id="proxy-close-btn">[CLOSE ✕]</button>
+      </div>
+      <iframe id="proxy-iframe" src="" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+    </div>
+
+    <!-- Self-host guide -->
+    <div class="section-label" style="margin-top:2rem;">&gt; SELF-HOST RAMMERHEAD</div>
+    <div class="proxy-guide">
+      <div class="guide-step">
+        <span class="guide-num">01</span>
+        <div>
+          <div class="guide-title">CLONE THE REPO</div>
+          <code>git clone https://github.com/binary-person/rammerhead</code>
+        </div>
+      </div>
+      <div class="guide-step">
+        <span class="guide-num">02</span>
+        <div>
+          <div class="guide-title">INSTALL &amp; START</div>
+          <code>npm install &amp;&amp; node server.js</code>
+        </div>
+      </div>
+      <div class="guide-step">
+        <span class="guide-num">03</span>
+        <div>
+          <div class="guide-title">DEPLOY &amp; POINT HERE</div>
+          <div style="font-size:0.72rem;color:var(--text-dim);">Deploy to any Node.js host (Railway, Fly.io, VPS). Then select "Custom instance URL" above and paste your server address.</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <span>&copy; RETRO ARCADE SYSTEMS</span>
+      <span>ALL MODULES SUBJECT TO AVAILABILITY</span>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
