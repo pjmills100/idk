@@ -7,7 +7,8 @@
 const passwords = {
   "summer2023": "FriendA",
   "fall2023":   "FriendB",
-  "spring2024": "FriendC"
+  "spring2024": "FriendC",
+  "dev123":     "Dev"       // Developer / admin access
 };
 
 // ── Storage helpers ──────────────────────────────────────────
@@ -64,7 +65,8 @@ function initLogin() {
 
       submitBtn.disabled = true;
       submitBtn.querySelector("span").textContent = "AUTHENTICATING...";
-      showMsg(msgEl, "success", `✓ ACCESS GRANTED — WELCOME, ${user.toUpperCase()}`);
+      // Hidden for all users — don't show the alias name in the message
+      showMsg(msgEl, "success", `✓ ACCESS GRANTED — REDIRECTING...`);
 
       // brief delay for dramatic effect, then redirect
       setTimeout(() => {
@@ -90,11 +92,11 @@ function initIndex() {
     return;
   }
 
-  // Populate username display
-  const nameEl = document.getElementById("display-name");
-  if (nameEl) nameEl.textContent = user.toUpperCase();
+  // Hidden for all users — display-name element is commented out in HTML
+  // const nameEl = document.getElementById("display-name");
+  // if (nameEl) nameEl.textContent = user.toUpperCase();
 
-  // Live clock
+  // Live clock (header)
   updateClock();
   setInterval(updateClock, 1000);
 
@@ -105,6 +107,13 @@ function initIndex() {
       clearSession();
       window.location.href = "login.html";
     });
+  }
+
+  // ── Dev-only: Settings button ──────────────────────────────
+  if (user === "Dev") {
+    const settingsBtn = document.getElementById("settings-btn");
+    if (settingsBtn) settingsBtn.style.display = "inline-block";
+    initSettingsPanel();
   }
 
   // Game cards — stub alert for unbuilt games
@@ -192,6 +201,54 @@ function flashBanner(msg, type = "success") {
   banner.style.opacity = "1";
   clearTimeout(banner._timer);
   banner._timer = setTimeout(() => { banner.style.opacity = "0"; }, 2800);
+}
+
+// ── Settings Panel (Dev only) ────────────────────────────────
+function initSettingsPanel() {
+  const panel      = document.getElementById("settings-panel");
+  const openBtn    = document.getElementById("settings-btn");
+  const closeBtn   = document.getElementById("settings-close");
+  const clockEl    = document.getElementById("settings-clock");
+  const radios     = document.querySelectorAll('input[name="theme"]');
+
+  if (!panel) return;
+
+  // Open / close
+  openBtn.addEventListener("click", () => {
+    panel.style.display = panel.style.display === "none" ? "block" : "none";
+  });
+  closeBtn.addEventListener("click", () => {
+    panel.style.display = "none";
+  });
+
+  // Settings clock (HH:MM only)
+  function tickSettingsClock() {
+    if (!clockEl) return;
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, "0");
+    const mm = String(now.getMinutes()).padStart(2, "0");
+    clockEl.textContent = `${hh}:${mm}`;
+  }
+  tickSettingsClock();
+  setInterval(tickSettingsClock, 5000);
+
+  // Restore saved theme
+  const savedTheme = sessionStorage.getItem("retro_theme") || "default";
+  applyTheme(savedTheme);
+  radios.forEach(r => { if (r.value === savedTheme) r.checked = true; });
+
+  // Theme switch
+  radios.forEach(radio => {
+    radio.addEventListener("change", () => {
+      applyTheme(radio.value);
+      sessionStorage.setItem("retro_theme", radio.value);
+    });
+  });
+}
+
+function applyTheme(name) {
+  document.body.classList.remove("theme-darkgrey");
+  if (name === "darkgrey") document.body.classList.add("theme-darkgrey");
 }
 
 // ── Auto-init ────────────────────────────────────────────────

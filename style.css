@@ -101,22 +101,8 @@ body {
   padding: 0.5rem 1.2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
 }
-
-.panel-titlebar .dots {
-  display: flex;
-  gap: 6px;
-}
-.panel-titlebar .dot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--text-dim);
-  opacity: 0.5;
-}
-.panel-titlebar .dot.red   { background: #ff4757; opacity: 0.9; }
-.panel-titlebar .dot.amber { background: #ffa502; opacity: 0.9; }
-.panel-titlebar .dot.green { background: #2ed573; opacity: 0.9; }
 
 .panel-titlebar .title {
   font-family: var(--font-vt);
@@ -124,7 +110,6 @@ body {
   color: var(--accent);
   letter-spacing: 2px;
   text-transform: uppercase;
-  flex: 1;
   text-align: center;
   text-shadow: 0 0 8px var(--accent);
 }
@@ -488,4 +473,124 @@ input[type="text"]:focus {
   .panel-body { padding: 1.5rem 1.3rem 2rem; }
   .site-header-inner { flex-direction: column; text-align: center; }
   .user-badge { text-align: center; }
+}
+
+/* ══════════════════════════════════════════
+   SETTINGS PANEL (Dev only)
+   ══════════════════════════════════════════ */
+
+.settings-panel {
+  width: 100%;
+  max-width: 860px;
+  background: var(--bg-panel);
+  border: 2px solid var(--border-glow);
+  box-shadow: 0 0 30px rgba(79,195,247,0.1);
+  margin-bottom: 2rem;
+}
+
+.settings-header {
+  background: var(--border);
+  border-bottom: 2px solid var(--border-glow);
+  padding: 0.5rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-vt);
+  font-size: 1.2rem;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px var(--accent);
+}
+
+.settings-body {
+  padding: 1.5rem 2rem;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.settings-row--col {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.settings-label {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+}
+.settings-value {
+  font-family: var(--font-vt);
+}
+
+/* ── Theme options ── */
+.theme-options {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  border: 2px solid var(--border);
+  padding: 0.5rem 0.9rem;
+  transition: border-color 0.2s;
+}
+.theme-option:hover { border-color: var(--accent); }
+.theme-option input[type="radio"] {
+  accent-color: var(--accent2);
+  width: 14px; height: 14px;
+  cursor: pointer;
+}
+
+.theme-swatch {
+  display: inline-block;
+  width: 22px; height: 22px;
+  border: 1px solid var(--border-glow);
+}
+.theme-swatch--default  { background: #0a0e14; box-shadow: inset 0 0 0 4px #1e3a5f; }
+.theme-swatch--darkgrey { background: #0c0c0c; box-shadow: inset 0 0 0 4px #2a2a2a; }
+
+.theme-opt-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+
+/* ── Settings btn accent color ── */
+.settings-btn {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.settings-btn:hover {
+  color: var(--bg) !important;
+  background: var(--accent);
+  border-color: var(--accent) !important;
+}
+
+/* ══════════════════════════════════════════
+   DARK GREY THEME  (.theme-darkgrey on body)
+   ══════════════════════════════════════════ */
+
+body.theme-darkgrey {
+  --bg:          #0c0c0c;
+  --bg-panel:    #111111;
+  --bg-card:     #161616;
+  --border:      #2a2a2a;
+  --border-glow: #3a3a3a;
+  --accent:      #8ecae6;
+  --accent2:     #90e0ef;
+  --text:        #d8d8d8;
+  --text-dim:    #666666;
+  --text-bright: #eeeeee;
+  --success:     #52b788;
 }

@@ -13,11 +13,6 @@
     <!-- Site header -->
     <header class="site-header">
       <div class="panel-titlebar">
-        <div class="dots">
-          <div class="dot red"></div>
-          <div class="dot amber"></div>
-          <div class="dot green"></div>
-        </div>
         <div class="title">GAME HUB // SESSION ACTIVE</div>
       </div>
       <div class="site-header-inner">
@@ -26,11 +21,16 @@
           <small>PRIVATE GAMES TERMINAL &nbsp;v1.0.0</small>
         </div>
         <div class="user-badge">
-          <div class="name" id="display-name">PLAYER</div>
+          <!-- display-name hidden for all users -->
+          <!-- <div class="name" id="display-name">PLAYER</div> -->
           <div style="margin-top:4px;">
             CLOCK: <span id="live-clock" style="color:var(--accent);">--:--:--</span>
           </div>
-          <button class="logout-btn" id="logout-btn" style="margin-top:8px;">[LOGOUT]</button>
+          <div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end;">
+            <!-- Settings button: shown only for Dev user via JS -->
+            <button class="logout-btn settings-btn" id="settings-btn" style="display:none;">[SETTINGS]</button>
+            <button class="logout-btn" id="logout-btn">[LOGOUT]</button>
+          </div>
         </div>
       </div>
     </header>
@@ -126,6 +126,42 @@
       </div>
 
     </div><!-- /game-grid -->
+
+    <!-- Settings panel (Dev only) -->
+    <div id="settings-panel" class="settings-panel" style="display:none;">
+      <div class="settings-header">
+        <span>&gt; SYSTEM SETTINGS <span style="color:var(--text-dim);font-size:0.7rem;">[DEV ACCESS]</span></span>
+        <button class="logout-btn" id="settings-close">[CLOSE ✕]</button>
+      </div>
+      <div class="settings-body">
+
+        <!-- Live clock -->
+        <div class="settings-row">
+          <span class="settings-label">▶ SYSTEM TIME</span>
+          <span class="settings-value" id="settings-clock" style="color:var(--accent2);font-size:1.4rem;letter-spacing:3px;">--:--</span>
+        </div>
+
+        <hr class="divider" style="margin:1rem 0;" />
+
+        <!-- Theme switcher -->
+        <div class="settings-row settings-row--col">
+          <span class="settings-label">▶ DISPLAY THEME</span>
+          <div class="theme-options">
+            <label class="theme-option" id="theme-opt-default">
+              <input type="radio" name="theme" value="default" checked />
+              <span class="theme-swatch theme-swatch--default"></span>
+              <span class="theme-opt-label">DEFAULT BLUE</span>
+            </label>
+            <label class="theme-option" id="theme-opt-darkgrey">
+              <input type="radio" name="theme" value="darkgrey" />
+              <span class="theme-swatch theme-swatch--darkgrey"></span>
+              <span class="theme-opt-label">DARK GREY</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="site-footer">
